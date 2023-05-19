@@ -43,3 +43,77 @@ async function chef() {
 }
 
 kitchen();
+
+// How to use the await keyword in JavaScript
+
+function toppings_choice() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(console.log('Which toppings would you love'));
+    }, 3000);
+  });
+}
+
+async function kitchen() {
+  console.log('A');
+  console.log('B');
+  console.log('C');
+
+  await toppings_choice();
+  console.log('D');
+}
+
+kitchen();
+console.log('doing the dishes');
+console.log('cleaning the tables');
+console.log('taking orders');
+
+/*
+We're gonna create two functions ->
+
+kitchen: to make ice cream
+time: to assign the amount of time each small task will take.
+*/
+
+let isShopOpen = true;
+function time(ms) {
+  return Promise((resolve, reject) => {
+    isShopOpen ? reject(console.log(Closed)) : setTimeout(resolve, ms);
+  });
+}
+
+async function kitch() {
+  try {
+    //
+    await time(2000);
+    console.log(`${stocks.Fruits[0]} was selected`);
+
+    await time(0000);
+    console.log('production has started');
+
+    await time(2000);
+    console.log('fruit has been chopped');
+
+    await time(1000);
+    console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} added`);
+
+    await time(1000);
+    console.log('start the machine');
+
+    await time(2000);
+    console.log(`ice cream placed on ${stocks.holder[1]}`);
+
+    await time(3000);
+    console.log(`${stocks.toppings[0]} as toppings`);
+
+    await time(2000);
+    console.log('Serve Ice Cream');
+  } catch (error) {
+    console.log(error);
+    //
+  } finally {
+    console.log('closed');
+  }
+}
+
+kitch();
