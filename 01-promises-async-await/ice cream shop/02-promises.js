@@ -22,7 +22,8 @@ let stocks = {
   toppings: ['chocolate', 'peanuts'],
 };
 
-let isShopOpen = true;
+// let isShopOpen = true;
+let isShopOpen = false;
 
 let order = (time, work) => {
   return new Promise((resolve, reject) => {
@@ -89,4 +90,21 @@ order(2000, flavour())
   })
   .then(() => {
     return order(3000, toppings());
+  })
+  .catch(() => {
+    console.log('Customer left');
+  })
+  .finally(() => {
+    console.log('end of day');
   });
+
+// Error handling
+
+// To catch our errors, let's change our variable to false.
+
+// let is_shop_open = false;
+
+// A small reminder here:
+
+// .then works when a promise is resolved
+// .catch works when a promise is rejected
