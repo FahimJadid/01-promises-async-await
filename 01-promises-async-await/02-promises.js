@@ -50,3 +50,18 @@ fetchprms
   .then((data) => {
     console.log(data[0].name);
   });
+
+const fetchProm = fetch(
+  'https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json'
+);
+
+fetchProm
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error(`Http error: ${response.status}`);
+    }
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data[0].name);
+  });
