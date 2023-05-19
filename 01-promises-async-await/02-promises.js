@@ -28,3 +28,15 @@ console.log('Started Request...');
 // Promise { <state>: "pending" }
 // Started request…
 // Received response: 200
+
+// Chaining promises
+const fetchProm = fetch(
+  'https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json'
+);
+
+fetchProm.then((res) => {
+  const jsonProm = res.json();
+  jsonProm.then((data) => {
+    console.log(data[0].name);
+  });
+});
